@@ -1,15 +1,10 @@
-module "openstack" {
-  source       = "../modules/openstack"
-  nb_master    = var.nb_master
-  nb_worker    = var.nb_worker
-  ssh_key_path = var.ssh_public_key_path
+module "k3d" {
+  source    = "../modules/k3d"
+  nb_master = var.nb_master
+  nb_worker = var.nb_worker
 }
 
-module "k0s" {
-  depends_on      = [module.openstack]
-  source          = "../modules/k0s"
-  ssh_key_path    = var.ssh_private_key_path
-  master_hosts    = module.openstack.master_hosts
-  worker_hosts    = module.openstack.worker_hosts
-  kubeconfig_path = var.kubeconfig_path
+module "ingress_nginx" {
+  depends_on = [module.k3d]
+  source     = "../modules/ingress-nginx"
 }

@@ -1,6 +1,7 @@
-provider "openstack" {
-  cloud    = "openstack"
-  insecure = true
-}
+provider "k3d" {}
 
-provider "k0s" {}
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
+}
