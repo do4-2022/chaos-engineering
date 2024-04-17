@@ -4,3 +4,4 @@ terraform/**/*.plan
 terraform/**/*.tfplan
 terraform/**/env/*.env.sh
 !terraform/**/env/example.env.sh
+terraform/**/terraform.tfstate
