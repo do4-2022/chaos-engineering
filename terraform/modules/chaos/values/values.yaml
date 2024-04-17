@@ -1,0 +1,13 @@
+portal:
+  frontend:
+    service:
+      type: NodePort
+    nodeSelector:
+      node-role.kubernetes.io/control-plane: "true"
+  server:
+    nodeSelector:
+      node-role.kubernetes.io/control-plane: "true"
+
+mongo:
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: "true"

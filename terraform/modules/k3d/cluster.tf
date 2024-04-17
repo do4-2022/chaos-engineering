@@ -30,4 +30,12 @@ resource "k3d_cluster" "nats" {
       "loadbalancer",
     ]
   }
+
+  label {
+    key = "node-role.kubernetes.io/control-plane"
+    value = "false"
+    node_filters = [ 
+      "agent[*]"
+    ]
+  }
 }

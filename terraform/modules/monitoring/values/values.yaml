@@ -9,3 +9,30 @@ grafana:
       - secretName: grafana.tibuzin.127.0.0.1.sslip.io
         hosts:
           - grafana.tibuzin.127.0.0.1.sslip.io
+
+alertmanager:
+  alertmanagerSpec:
+    nodeSelector:
+      node-role.kubernetes.io/control-plane: "true" 
+      
+prometheusOperator: 
+  admissionWebhooks:
+    deployment:
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: "true"
+  
+    patch:
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: "true"
+  
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: "true"
+  
+  prometheusSpec:
+    nodeSelector:
+      node-role.kubernetes.io/control-plane: "true"
+
+thanosRuler:
+  thanosRulerSpec:
+    nodeSelector:
+      node-role.kubernetes.io/control-plane: "true"
