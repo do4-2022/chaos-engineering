@@ -1,7 +1,6 @@
 variable "ssh_key_path" {
-  description = "The path to the SSH public key to use"
+  description = "The path to the SSH private key to use"
   type        = string
-  default     = "~/.ssh/id_rsa.pub"
 }
 
 variable "master_hosts" {
