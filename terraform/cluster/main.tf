@@ -6,6 +6,7 @@ module "openstack" {
 }
 
 module "k0s" {
+  depends_on      = [module.openstack]
   source          = "../modules/k0s"
   ssh_key_path    = var.ssh_private_key_path
   master_hosts    = module.openstack.master_hosts

@@ -1,11 +1,11 @@
 locals {
-  kubeconfig_content = fileexists(var.kubeconfig_path) ? yamldecode(file(var.kubeconfig_path)) : {
+  kubeconfig_content = fileexists(var.kubeconfig_path) ? file(var.kubeconfig_path) : yamlencode({
     apiVersion : "v1",
     kind : "Config",
     clusters : [],
     contexts : [],
     users : []
-  }
+  })
 }
 
 resource "k0s_cluster" "kubernetes_cluster" {
@@ -42,16 +42,17 @@ resource "local_sensitive_file" "merge_kubeconfig" {
   content = yamlencode({
     "apiVersion" : "v1",
     "kind" : "Config",
+    "current-context" : yamldecode(k0s_cluster.kubernetes_cluster.kubeconfig).current-context,
     "clusters" : concat(
-      local.kubeconfig_content.clusters,
+      yamldecode(local.kubeconfig_content).clusters,
       [yamldecode(k0s_cluster.kubernetes_cluster.kubeconfig).clusters[0]]
     ),
     "contexts" : concat(
-      local.kubeconfig_content.contexts,
+      yamldecode(local.kubeconfig_content).contexts,
       [yamldecode(k0s_cluster.kubernetes_cluster.kubeconfig).contexts[0]]
     ),
     "users" : concat(
-      local.kubeconfig_content.users,
+      yamldecode(local.kubeconfig_content).users,
       [yamldecode(k0s_cluster.kubernetes_cluster.kubeconfig).users[0]]
     )
   })
