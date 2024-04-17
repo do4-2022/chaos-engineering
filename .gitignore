@@ -1,0 +1,6 @@
+terraform/**/.terraform
+terraform/**/.terraform.lock.hcl
+terraform/**/*.plan
+terraform/**/*.tfplan
+terraform/**/env/*.env.sh
+!terraform/**/env/example.env.sh
