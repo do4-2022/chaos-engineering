@@ -13,4 +13,7 @@ module "chaos" {
   depends_on = [module.k3d]
   source     = "../modules/chaos"
   litmus_admin_pwd = "password"
+  providers = {
+    kubectl.provider = kubectl 
+  }
 }

@@ -1,8 +1,8 @@
-resource "helm_release" "litmus" {
-  repository = "https://litmuschaos.github.io/litmus-helm/"
-  chart = "litmus"
-  name = "litmus"
-  namespace = "litmus"
+resource "helm_release" "chaos-mesh" {
+  repository = "https://charts.chaos-mesh.org"
+  chart = "chaos-mesh"
+  name = "chaos-mesh"
+  namespace = "chaos-mesh"
   atomic = true
   cleanup_on_fail = true
   create_namespace = true   
@@ -10,10 +10,13 @@ resource "helm_release" "litmus" {
   values = [
     file("${path.module}/values/values.yaml")
   ]
+}
 
-  set_sensitive {
-    name = "adminConfig.ADMIN_PASSWORD"
-    value = var.litmus_admin_pwd
-  }
-
+resource "kubectl_manifest" "app_ns" {
+  yaml_body = <<-YAML
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  YAML
 }

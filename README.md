@@ -35,3 +35,6 @@
    ```
    terraform apply plan.plan
    ```
+
+> [!NOTE]
+> You might want to apply the configuration a second time as the apply of the CRDs might fail the first time. 

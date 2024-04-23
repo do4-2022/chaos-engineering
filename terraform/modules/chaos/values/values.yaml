@@ -1,13 +1,25 @@
-portal:
-  frontend:
-    service:
-      type: NodePort
-    nodeSelector:
-      node-role.kubernetes.io/control-plane: "true"
-  server:
-    nodeSelector:
-      node-role.kubernetes.io/control-plane: "true"
-
-mongo:
+controllerManager:
   nodeSelector:
     node-role.kubernetes.io/control-plane: "true"
+
+dashboard:
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: "true"
+
+dnsServer:
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: "true"
+
+prometheus:
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: "true"
+
+
+chaosDaemon:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: node-role.kubernetes.io/control-plane
+              operator: DoesNotExist
