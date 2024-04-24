@@ -17,6 +17,8 @@ resource "kubectl_manifest" "app_ns" {
 apiVersion: v1
 kind: Namespace
 metadata:
+  annotations:
+    chaos-mesh.org/inject: enabled
   name: app
   YAML
 }

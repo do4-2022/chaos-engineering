@@ -1,6 +1,7 @@
 controllerManager:
   nodeSelector:
     node-role.kubernetes.io/control-plane: "true"
+  enableFilterNamespace: true
 
 dashboard:
   nodeSelector:
