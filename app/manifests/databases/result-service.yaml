@@ -1,0 +1,16 @@
+---
+# Source: votingapp/templates/result-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: result
+  name: result
+  namespace: app
+spec:
+  ports:
+    - name: "result-service"
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: result
