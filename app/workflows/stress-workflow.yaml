@@ -1,0 +1,31 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  name: 'stress-workflow'
+  namespace: 'app'
+spec:
+  entry: entry
+  templates:
+    - name: entry
+      templateType: Serial
+      children:
+        - Stress experiment
+      deadline: 6m
+    - name: Stress experiment
+      templateType: StressChaos
+      deadline: 5m
+      stressChaos:
+        selector:
+          namespaces:
+            - app
+          labelSelectors:
+            chaosType: stress
+        mode: all
+        stressors:
+          cpu:
+            load: 95
+            workers: 2
+          memory:
+            oomScoreAdj: 500
+            size: 50M
+            workers: 2
