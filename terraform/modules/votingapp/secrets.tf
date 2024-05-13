@@ -27,7 +27,7 @@ resource "kubernetes_secret" "registry_credentials" {
 
 resource "kubernetes_secret" "postgresql_credentials" {
   metadata {
-    name      = "postgresql-credentials"
+    name      = "db"
     namespace = "votingapp"
   }
 
