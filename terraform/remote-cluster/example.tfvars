@@ -7,3 +7,6 @@ ssh_login_name = "root"
 
 git_username = "git"
 git_password = "password"
+
+postgresql_username = "postgres"
+postgresql_password = "password" # You should change this
