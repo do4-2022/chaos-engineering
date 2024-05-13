@@ -3,5 +3,8 @@ kind: Kustomization
 namespace: chaos-mesh
 
 resources:
+  - cluster-role-binding.yaml
+  - cluster-role.yaml
   - repository.yaml
   - release.yaml
+  - sa.yaml
