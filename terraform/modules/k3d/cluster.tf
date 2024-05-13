@@ -1,7 +1,7 @@
-resource "k3d_cluster" "nats" {
-  name    = "nats"
-  servers = var.nb_master
-  agents  = var.nb_worker
+resource "k3d_cluster" "votingapp" {
+  name    = "votingapp-${var.cluster_environment}"
+  servers = var.nb_masters
+  agents  = var.nb_workers
 
   k3s {
     extra_args {

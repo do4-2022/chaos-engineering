@@ -2,7 +2,7 @@ terraform/**/.terraform
 terraform/**/.terraform.lock.hcl
 terraform/**/*.plan
 terraform/**/*.tfplan
-terraform/**/env/*.env.sh
-!terraform/**/env/example.env.sh
+terraform/**/*.tfvars
+!terraform/**/example.tfvars
 terraform/**/terraform.tfstate
 terraform/**/terraform.tfstate.backup

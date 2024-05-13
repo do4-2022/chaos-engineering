@@ -1,0 +1,13 @@
+gitRepository:
+  spec:
+    interval: 5m
+    url: https://github.com/do4-2022/NATS-Julien-Yann-AlexisB
+    ref:
+      branch: main
+    secretRef:
+      name: git-credentials
+kustomization:
+  spec:
+    interval: 5m
+    prune: true
+    wait: true

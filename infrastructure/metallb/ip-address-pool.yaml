@@ -1,0 +1,7 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: public-ip
+spec:
+  addresses:
+    - 154.62.109.43/32

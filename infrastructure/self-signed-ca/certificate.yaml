@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: votingapp-ca
+spec:
+  isCA: true
+  commonName: votingapp-ca
+  secretName: votingapp-ca
+  issuerRef:
+    name: votingapp-selfsigned-cluster-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
