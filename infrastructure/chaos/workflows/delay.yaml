@@ -8,8 +8,8 @@ spec:
     - name: entry
       templateType: Parallel
       children:
-        - DelayPackets
-    - name: DelayPackets
+        - delay-packets
+    - name: delay-packets
       templateType: NetworkChaos
       deadline: lags the packets sent within the cluster
       networkChaos:

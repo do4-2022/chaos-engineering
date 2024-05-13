@@ -8,9 +8,9 @@ spec:
     - name: entry
       templateType: Serial
       children:
-        - Stress experiment
+        - stress-experiment
       deadline: 6m
-    - name: Stress experiment
+    - name: stress-experiment
       templateType: StressChaos
       deadline: 5m
       stressChaos:
