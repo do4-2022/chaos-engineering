@@ -84,6 +84,30 @@ To deploy a remote Kubernetes cluster with k0s:
    terraform apply plan.plan
    ```
 
+## Access Chaos Mesh Dashboard
+
+To access the Chaos Mesh dashboard, you need to port-forward the service to your local machine.
+
+1. Get the Chaos Mesh dashboard service name:
+
+   ```
+   kubectl get svc -n chaos-mesh
+   ```
+
+2. Port-forward the service to your local machine:
+
+   ```
+   kubectl port-forward svc/chaos-dashboard -n chaos-mesh 2333:2333
+   ```
+
+3. Generate a token to access the dashboard:
+
+   ```
+   kubectl create token account-cluster-manager -n chaos-mesh
+   ```
+
+4. Access the dashboard by visiting `http://localhost:2333` in your browser.
+
 ## Maintenance
 
 This project uses Flux to manage the Kubernetes resources. Flux watches the Git repository for changes and applies the changes to the cluster.
