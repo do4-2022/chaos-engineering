@@ -1,4 +1,5 @@
 resource "helm_release" "flux" {
+  depends_on      = [kubernetes_namespace.flux_system]
   name            = "flux2"
   repository      = "https://fluxcd-community.github.io/helm-charts"
   chart           = "flux2"
@@ -10,7 +11,7 @@ resource "helm_release" "flux" {
 }
 
 resource "helm_release" "flux_sync" {
-  depends_on      = [helm_release.flux]
+  depends_on      = [helm_release.flux, kubernetes_namespace.flux_system]
   name            = "nats-julien-yann-alexisb"
   repository      = "https://fluxcd-community.github.io/helm-charts"
   chart           = "flux2-sync"
