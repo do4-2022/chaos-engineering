@@ -10,6 +10,8 @@ resources:
   - apps/vote-ui.yaml
   - apps/vote.yaml
   - infrastructure/cert-manager.yaml
+  - infrastructure/chaos-mesh.yaml
+  - infrastructure/chaos.yaml
   - infrastructure/ingress-nginx.yaml
   - infrastructure/monitoring.yaml
   - infrastructure/weave-gitops.yaml

@@ -1,6 +1,9 @@
 resource "kubernetes_namespace" "votingapp" {
   metadata {
     name = "votingapp"
+    annotations = {
+      "chaos-mesh.org/inject" = "enabled"
+    }
   }
 }
 
@@ -22,3 +25,14 @@ resource "kubernetes_namespace" "monitoring" {
   }
 }
 
+resource "kubernetes_namespace" "chaos_mesh" {
+  metadata {
+    name = "chaos-mesh"
+  }
+}
+
+resource "kubernetes_namespace" "chaos" {
+  metadata {
+    name = "chaos"
+  }
+}

@@ -16,12 +16,19 @@ spec:
       labels:
         app: vote
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
       containers:
         - image: voting/vote:v1.0.13
-          name: vote 
+          name: vote
           env:
-          - name: BACKEND
-            value: "nats"
+            - name: BACKEND
+              value: "nats"
           imagePullPolicy: Always
           livenessProbe:
             initialDelaySeconds: 30
@@ -37,7 +44,7 @@ spec:
               memory: 256Mi
               cpu: 200m
             limits:
-              memory: 256Mi 
+              memory: 256Mi
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -47,10 +54,10 @@ spec:
               type: RuntimeDefault
             capabilities:
               drop:
-              - ALL
+                - ALL
           volumeMounts:
-          - name: temp
-            mountPath: /tmp
+            - name: temp
+              mountPath: /tmp
       volumes:
-      - name: temp
-        emptyDir: {}
+        - name: temp
+          emptyDir: {}

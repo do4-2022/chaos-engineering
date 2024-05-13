@@ -14,6 +14,10 @@ spec:
         name: prometheus-community
       interval: 12h
   values:
+    alertmanager:
+      alertmanagerSpec:
+        nodeSelector:
+          node-role.kubernetes.io/control-plane: "true"
     grafana:
       ingress:
         enabled: true
@@ -21,8 +25,27 @@ spec:
           kubernetes.io/ingress.class: nginx
           cert-manager.io/cluster-issuer: votingapp-cluster-issuer
         hosts:
-          - grafana.meetmapper.127.0.0.1.sslip.io
+          - grafana.votingapp.127.0.0.1.sslip.io
         tls:
-          - secretName: grafana.meetmapper.127.0.0.1.sslip.io
+          - secretName: grafana.votingapp.127.0.0.1.sslip.io
             hosts:
-              - grafana.meetmapper.127.0.0.1.sslip.io
+              - grafana.votingapp.127.0.0.1.sslip.io
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: "true"
+    prometheusOperator:
+      admissionWebhooks:
+        deployment:
+          nodeSelector:
+            node-role.kubernetes.io/control-plane: "true"
+        patch:
+          nodeSelector:
+            node-role.kubernetes.io/control-plane: "true"
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: "true"
+      prometheusSpec:
+        nodeSelector:
+          node-role.kubernetes.io/control-plane: "true"
+    thanosRuler:
+      thanosRulerSpec:
+        nodeSelector:
+          node-role.kubernetes.io/control-plane: "true"

@@ -16,6 +16,13 @@ spec:
       labels:
         app: result
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
       containers:
         - image: voting/result:v1.0.16
           name: result
@@ -48,7 +55,7 @@ spec:
               memory: 256Mi
               cpu: 250m
             limits:
-              memory: 256Mi 
+              memory: 256Mi
           securityContext:
             allowPrivilegeEscalation: false
             # readOnlyRootFilesystem: true
@@ -58,4 +65,4 @@ spec:
               type: RuntimeDefault
             capabilities:
               drop:
-              - ALL
+                - ALL

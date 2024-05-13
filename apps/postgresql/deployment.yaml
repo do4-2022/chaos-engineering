@@ -16,6 +16,13 @@ spec:
       labels:
         app: db
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
       containers:
         - image: postgres:15.3-alpine3.18
           name: postgres
@@ -37,7 +44,7 @@ spec:
               memory: 128Mi
               cpu: 100m
             limits:
-              memory: 128Mi 
+              memory: 128Mi
               cpu: 100m
           securityContext:
             allowPrivilegeEscalation: false

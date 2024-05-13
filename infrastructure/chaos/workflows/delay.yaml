@@ -1,0 +1,29 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  name: delay
+spec:
+  entry: entry
+  templates:
+    - name: entry
+      templateType: Parallel
+      children:
+        - DelayPackets
+    - name: DelayPackets
+      templateType: NetworkChaos
+      deadline: lags the packets sent within the cluster
+      networkChaos:
+        action: delay
+        target:
+          selector:
+            namespaces:
+              - votingapp
+          mode: all
+        selector:
+          namespaces:
+            - votingapp
+        mode: all
+        direction: from
+        delay:
+          latency: 500ms
+          jitter: 200ms

@@ -16,6 +16,13 @@ spec:
       labels:
         app: nats
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
       containers:
         - image: nats:2.9.11-alpine3.17
           name: nats
@@ -33,7 +40,7 @@ spec:
               memory: 64Mi
               cpu: 100m
             limits:
-              memory: 64Mi 
+              memory: 64Mi
               cpu: 100m
           securityContext:
             allowPrivilegeEscalation: false
@@ -44,4 +51,4 @@ spec:
               type: RuntimeDefault
             capabilities:
               drop:
-              - ALL
+                - ALL

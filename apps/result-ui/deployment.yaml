@@ -16,6 +16,13 @@ spec:
       labels:
         app: result-ui
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
       containers:
         - image: voting/result-ui:v1.0.15
           name: result-ui
@@ -34,7 +41,7 @@ spec:
               memory: 64Mi
               cpu: 50m
             limits:
-              memory: 64Mi 
+              memory: 64Mi
               cpu: 50m
           securityContext:
             allowPrivilegeEscalation: false
@@ -42,12 +49,12 @@ spec:
             seccompProfile:
               type: RuntimeDefault
           volumeMounts:
-          - name: run
-            mountPath: /var/run
-          - name: cache
-            mountPath: /var/cache/nginx
+            - name: run
+              mountPath: /var/run
+            - name: cache
+              mountPath: /var/cache/nginx
       volumes:
-      - name: run
-        emptyDir: {}
-      - name: cache
-        emptyDir: {}
+        - name: run
+          emptyDir: {}
+        - name: cache
+          emptyDir: {}
