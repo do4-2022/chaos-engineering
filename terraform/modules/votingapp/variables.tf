@@ -37,3 +37,14 @@ variable "git_password" {
   type        = string
   sensitive   = true
 }
+
+variable "postgresql_username" {
+  description = "The username for authenticating to the PostgreSQL database"
+  type        = string
+}
+
+variable "postgresql_password" {
+  description = "The password for authenticating to the PostgreSQL database"
+  type        = string
+  sensitive   = true
+}

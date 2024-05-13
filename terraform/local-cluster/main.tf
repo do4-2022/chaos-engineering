@@ -25,7 +25,9 @@ module "votingapp" {
   cluster_config_client_certificate     = module.k3d.config_client_certificate
   cluster_config_client_key             = module.k3d.config_client_key
 
-  git_username       = var.git_username
-  git_password       = var.git_password
-  docker_config_path = var.docker_config_path
+  git_username        = var.git_username
+  git_password        = var.git_password
+  docker_config_path  = var.docker_config_path
+  postgresql_username = var.postgresql_username
+  postgresql_password = var.postgresql_password
 }

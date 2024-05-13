@@ -32,7 +32,9 @@ module "votingapp" {
   cluster_config_client_certificate     = base64decode(local.kube_config.users[0].user.client-certificate-data)
   cluster_config_client_key             = base64decode(local.kube_config.users[0].user.client-key-data)
 
-  git_username       = var.git_username
-  git_password       = var.git_password
-  docker_config_path = var.docker_config_path
+  git_username        = var.git_username
+  git_password        = var.git_password
+  docker_config_path  = var.docker_config_path
+  postgresql_username = var.postgresql_username
+  postgresql_password = var.postgresql_password
 }

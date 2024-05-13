@@ -24,3 +24,15 @@ resource "kubernetes_secret" "registry_credentials" {
 
   type = "kubernetes.io/dockerconfigjson"
 }
+
+resource "kubernetes_secret" "postgresql_credentials" {
+  metadata {
+    name      = "postgresql-credentials"
+    namespace = "votingapp"
+  }
+
+  data = {
+    "username" = var.postgresql_username
+    "password" = var.postgresql_password
+  }
+}

@@ -4,6 +4,7 @@ namespace: flux-system
 
 resources:
   - apps/nats.yaml
+  - apps/postgresql.yaml
   - apps/result-ui.yaml
   - apps/result.yaml
   - apps/vote-ui.yaml
