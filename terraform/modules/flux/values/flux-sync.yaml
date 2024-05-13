@@ -1,7 +1,7 @@
 gitRepository:
   spec:
     interval: 5m
-    url: https://github.com/do4-2022/NATS-Julien-Yann-AlexisB
+    url: https://github.com/do4-2022/nats-julien-yann-alexisb
     ref:
       branch: main
     secretRef:

@@ -11,7 +11,7 @@ spec:
   wait: true
   sourceRef:
     kind: GitRepository
-    name: NATS-Julien-Yann-AlexisB
+    name: nats-julien-yann-alexisb
   path: infrastructure/letsencrypt-issuer
   dependsOn:
     - name: cert-manager

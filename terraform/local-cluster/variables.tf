@@ -25,12 +25,12 @@ variable "docker_config_path" {
 # Secrets
 
 variable "git_username" {
-  description = "The username for authenticating to the NATS-Julien-Yann-AlexisB repositories"
+  description = "The username for authenticating to the nats-julien-yann-alexisb repositories"
   type        = string
 }
 
 variable "git_password" {
-  description = "The password for authenticating to the NATS-Julien-Yann-AlexisB repositories"
+  description = "The password for authenticating to the nats-julien-yann-alexisb repositories"
   type        = string
   sensitive   = true
 }

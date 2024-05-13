@@ -11,7 +11,7 @@ resource "helm_release" "flux" {
 
 resource "helm_release" "flux_sync" {
   depends_on      = [helm_release.flux]
-  name            = "NATS-Julien-Yann-AlexisB"
+  name            = "nats-julien-yann-alexisb"
   repository      = "https://fluxcd-community.github.io/helm-charts"
   chart           = "flux2-sync"
   namespace       = "flux-system"

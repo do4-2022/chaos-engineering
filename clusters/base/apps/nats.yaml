@@ -11,5 +11,5 @@ spec:
   wait: true
   sourceRef:
     kind: GitRepository
-    name: NATS-Julien-Yann-AlexisB
+    name: nats-julien-yann-alexisb
   path: apps/nats

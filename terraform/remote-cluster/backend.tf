@@ -1,6 +1,6 @@
 terraform {
   cloud {
-    organization = "NATS-Julien-Yann-AlexisB"
+    organization = "nats-julien-yann-alexisb"
 
     workspaces {
       name = "votingapp"
