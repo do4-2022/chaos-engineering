@@ -37,8 +37,6 @@ spec:
                 secretKeyRef:
                   name: db
                   key: password
-            - name: BACKEND
-              value: "nats"
           imagePullPolicy: Always
           livenessProbe:
             initialDelaySeconds: 30

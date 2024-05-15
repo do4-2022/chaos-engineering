@@ -3,5 +3,4 @@ kind: Kustomization
 namespace: votingapp
 
 resources:
-  - deployment.yaml
-  - service.yaml
+  - ../deployment.yaml
