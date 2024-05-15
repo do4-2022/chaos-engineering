@@ -36,3 +36,5 @@ spec:
       create: true
       nodeSelector:
         node-role.kubernetes.io/control-plane: "true"
+      volume:
+        storageClassName: ""
