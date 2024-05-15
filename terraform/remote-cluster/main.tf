@@ -1,7 +1,19 @@
+module "openstack" {
+  source = "../modules/openstack"
+
+  openstack_username                     = var.openstack_username
+  openstack_tenant_name                  = var.openstack_tenant_name
+  openstack_password                     = var.openstack_password
+  openstack_auth_url                     = var.openstack_auth_url
+  openstack_region                       = var.openstack_region
+  openstack_instances_keypair_name       = var.openstack_instances_keypair_name
+  openstack_instances_keypair_public_key = var.openstack_instances_keypair_public_key
+}
+
 module "k0s" {
   source              = "../modules/k0s"
-  master_hosts        = var.master_hosts
-  worker_hosts        = var.worker_hosts
+  master_hosts        = [module.openstack.openstack_instance_master_ip]
+  worker_hosts        = [module.openstack.openstack_instance_worker_ip]
   ssh_login_name      = var.ssh_login_name
   cluster_environment = var.cluster_environment
 }

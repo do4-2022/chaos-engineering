@@ -3,16 +3,6 @@ variable "cluster_environment" {
   type        = string
 }
 
-variable "master_hosts" {
-  description = "List of master hosts"
-  type        = list(string)
-}
-
-variable "worker_hosts" {
-  description = "List of worker hosts"
-  type        = list(string)
-}
-
 variable "ssh_login_name" {
   description = "Name of the user to use for SSH access"
 }
@@ -43,6 +33,48 @@ variable "postgresql_username" {
 
 variable "postgresql_password" {
   description = "The password for authenticating to the PostgreSQL database"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_username" {
+  description = "The OpenStack username"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_tenant_name" {
+  description = "The OpenStack tenant name"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_password" {
+  description = "The OpenStack password"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_auth_url" {
+  description = "The OpenStack auth URL"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_region" {
+  description = "The OpenStack region"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_instances_keypair_name" {
+  description = "The OpenStack instances keypair name"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_instances_keypair_public_key" {
+  description = "The OpenStack instances keypair public key"
   type        = string
   sensitive   = true
 }
