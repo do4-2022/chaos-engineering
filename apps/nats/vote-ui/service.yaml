@@ -7,10 +7,11 @@ metadata:
     app: vote-ui
   name: vote-ui
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: "vote-ui-service"
       port: 80
       targetPort: 80
+      nodePort: 31010
   selector:
     app: vote-ui
