@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: vote
+        chaosType: NetworkFault
     spec:
       affinity:
         nodeAffinity:

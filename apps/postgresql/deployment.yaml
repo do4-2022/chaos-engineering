@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: db
+        chaosType: stress
     spec:
       affinity:
         nodeAffinity:
