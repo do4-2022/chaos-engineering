@@ -11,11 +11,12 @@ module "openstack" {
 }
 
 module "k0s" {
-  source              = "../modules/k0s"
-  master_hosts        = [module.openstack.openstack_instance_master_ip]
-  worker_hosts        = [module.openstack.openstack_instance_worker_ip]
-  ssh_login_name      = var.ssh_login_name
-  cluster_environment = var.cluster_environment
+  source               = "../modules/k0s"
+  master_hosts         = [module.openstack.openstack_instance_master_ip]
+  worker_hosts         = [module.openstack.openstack_instance_worker_ip]
+  ssh_login_name       = var.ssh_login_name
+  cluster_environment  = var.cluster_environment
+  ssh_private_key_path = var.openstack_instances_keypair_private_key
 }
 
 locals {

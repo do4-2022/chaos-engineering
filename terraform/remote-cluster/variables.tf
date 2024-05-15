@@ -78,3 +78,9 @@ variable "openstack_instances_keypair_public_key" {
   type        = string
   sensitive   = true
 }
+
+variable "openstack_instances_keypair_private_key" {
+  description = "The OpenStack instances keypair private key"
+  type        = string
+  sensitive   = true
+}

@@ -13,9 +13,10 @@ resource "k0s_cluster" "votingapp" {
       for index, controller_host in local.controller_hosts : {
         role = "controller"
         ssh = {
-          address = controller_host
-          port    = 22
-          user    = var.ssh_login_name
+          address  = controller_host
+          port     = 22
+          user     = var.ssh_login_name
+          key_path = var.ssh_private_key_path
         }
         hostname = "votingapp-${var.cluster_environment}-controller-${index}"
       }
@@ -24,9 +25,10 @@ resource "k0s_cluster" "votingapp" {
       for index, worker_host in local.worker_hosts : {
         role = "worker"
         ssh = {
-          address = worker_host
-          port    = 22
-          user    = var.ssh_login_name
+          address  = worker_host
+          port     = 22
+          user     = var.ssh_login_name
+          key_path = var.ssh_private_key_path
         }
         hostname = "votingapp-${var.cluster_environment}-worker-${index}"
       }
@@ -35,9 +37,10 @@ resource "k0s_cluster" "votingapp" {
       for index, both_host in local.both_hosts : {
         role = "controller+worker"
         ssh = {
-          address = both_host
-          port    = 22
-          user    = var.ssh_login_name
+          address  = both_host
+          port     = 22
+          user     = var.ssh_login_name
+          key_path = var.ssh_private_key_path
         }
         no_taints = true
         hostname  = "votingapp-${var.cluster_environment}-controller-worker-${index}"

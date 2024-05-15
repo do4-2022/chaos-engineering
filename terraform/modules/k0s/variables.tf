@@ -16,3 +16,8 @@ variable "cluster_environment" {
   description = "The environment of the cluster"
   type        = string
 }
+
+variable "ssh_private_key_path" {
+  description = "Path to the SSH private key"
+  type        = string
+}
