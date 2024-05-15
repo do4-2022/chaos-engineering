@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: chaos
 
 resources:
-  - workflows/delay.yaml
+  - experiments/exessive_delay.yaml
   - workflows/stress.yaml

@@ -1,30 +1,45 @@
 apiVersion: chaos-mesh.org/v1alpha1
 kind: Workflow
 metadata:
-  name: stress
+  name: nats-chaos-workflow
+  namespace: votingapp
 spec:
-  entry: entry
+  entry: nats-chaos
   templates:
-    - name: entry
+    - name: nats-chaos
+      templateType: Parallel  # Run stress and network chaos in parallel
+      deadline: 5m  # 5 minutes
+      children:
+        - stress-nats
+        - network-delay-nats
+
+    - name: stress-nats  # Inject stress chaos on NATS deployment
       templateType: Serial
       children:
-        - stress-experiment
-      deadline: 6m
-    - name: stress-experiment
-      templateType: StressChaos
-      deadline: 5m
-      stressChaos:
+        - stress-chaos
+
+    - name: stress-chaos
+      templateType: Chaos
+      chaos:
         selector:
-          namespaces:
-            - votingapp
           labelSelectors:
-            chaosType: stress
-        mode: all
+            "chaosType": "stress"  # Select NATS deployment
+        mode: one
         stressors:
           cpu:
             load: 95
-            workers: 2
+            workers: 1
           memory:
-            oomScoreAdj: 500
-            size: 50M
-            workers: 2
+            workers: 1
+            size: 500MB  # Adjust memory stress as needed
+
+    - name: network-delay-nats  # Inject network delay chaos on NATS
+      templateType: Chaos  
+      chaos:
+        selector:
+          labelSelectors:
+            "chaosType": "stress"
+        mode: all
+        action: delay
+        delay:
+          latency: "200ms"  # Adjust network delay as needed

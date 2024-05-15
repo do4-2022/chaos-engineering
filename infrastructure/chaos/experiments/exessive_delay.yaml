@@ -1,0 +1,27 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: exessive-delay
+  annotations:
+    experiment.chaos-mesh.org/pause: "true"
+spec:
+  action: delay # the specific chaos action to inject
+  mode: all # the mode to run chaos action; supported modes are one/all/fixed/fixed-percent/random-max-percent
+  selector: # pods where to inject chaos actions
+    podPhaseSelectors:
+        - 'Running'
+    namespaces:
+      - votingapp
+    labelSelectors:
+      'chaosType': 'NetworkFault'
+  delay:
+    latency: '40s'
+    correlation: '100'
+    jitter: '10s'
+  duration: '5m'
+  direction: 'to'
+  target:
+    mode: all
+    selector:
+      namespaces:
+        - votingapp
