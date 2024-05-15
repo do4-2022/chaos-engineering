@@ -34,7 +34,7 @@ spec:
         node-role.kubernetes.io/control-plane: "true"
     prometheus:
       create: true
+      volume:
+        storageClassName: "local-path"
       nodeSelector:
         node-role.kubernetes.io/control-plane: "true"
-      volume:
-        storageClassName: ""
