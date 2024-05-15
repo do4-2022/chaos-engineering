@@ -7,6 +7,15 @@ resource "kubernetes_namespace" "votingapp" {
   }
 }
 
+resource "kubernetes_namespace" "votingapp_nats" {
+  metadata {
+    name = "votingapp-nats"
+    annotations = {
+      "chaos-mesh.org/inject" = "enabled"
+    }
+  }
+}
+
 resource "kubernetes_namespace" "cert_manager" {
   metadata {
     name = "cert-manager"

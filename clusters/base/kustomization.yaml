@@ -3,15 +3,25 @@ kind: Kustomization
 namespace: flux-system
 
 resources:
-  - apps/nats.yaml
-  - apps/postgresql.yaml
-  - apps/result-ui.yaml
-  - apps/result.yaml
-  - apps/vote-ui.yaml
-  - apps/vote.yaml
+  - apps/database/postgresql.yaml
+  - apps/database/redis.yaml
+  - apps/database/result-ui.yaml
+  - apps/database/result.yaml
+  - apps/database/vote-ui.yaml
+  - apps/database/vote.yaml
+  - apps/database/worker.yaml
+
+  - apps/nats/nats.yaml
+  - apps/nats/postgresql.yaml
+  - apps/nats/result-ui.yaml
+  - apps/nats/result.yaml
+  - apps/nats/vote-ui.yaml
+  - apps/nats/vote.yaml
+  - apps/nats/worker.yaml
+
   - infrastructure/cert-manager.yaml
   - infrastructure/chaos-mesh.yaml
-#  - infrastructure/chaos.yaml
+  #  - infrastructure/chaos.yaml
   - infrastructure/ingress-nginx.yaml
   - infrastructure/monitoring.yaml
   - infrastructure/weave-gitops.yaml
