@@ -22,6 +22,9 @@ spec:
       templateType: Chaos
       chaos:
         selector:
+          namespaces:
+            - votingapp
+            - votingapp-nats
           labelSelectors:
             "chaosType": "stress"  # Select NATS deployment
         mode: one
@@ -37,6 +40,9 @@ spec:
       templateType: Chaos  
       chaos:
         selector:
+          namespaces:
+            - votingapp
+            - votingapp-nats
           labelSelectors:
             "chaosType": "stress"
         mode: all

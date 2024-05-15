@@ -12,6 +12,7 @@ spec:
         - 'Running'
     namespaces:
       - votingapp
+      - votingapp-nats
     labelSelectors:
       'chaosType': 'NetworkFault'
   delay:
@@ -25,3 +26,4 @@ spec:
     selector:
       namespaces:
         - votingapp
+        - votingapp-nats
