@@ -13,28 +13,3 @@ spec:
         kind: HelmRepository
         name: prometheus-community
       interval: 12h
-  values:
-    alertmanager:
-      alertmanagerSpec:
-        nodeSelector:
-          node-role.kubernetes.io/control-plane: "true"
-    grafana:
-      nodeSelector:
-        node-role.kubernetes.io/control-plane: "true"
-    prometheusOperator:
-      admissionWebhooks:
-        deployment:
-          nodeSelector:
-            node-role.kubernetes.io/control-plane: "true"
-        patch:
-          nodeSelector:
-            node-role.kubernetes.io/control-plane: "true"
-      nodeSelector:
-        node-role.kubernetes.io/control-plane: "true"
-      prometheusSpec:
-        nodeSelector:
-          node-role.kubernetes.io/control-plane: "true"
-    thanosRuler:
-      thanosRulerSpec:
-        nodeSelector:
-          node-role.kubernetes.io/control-plane: "true"
