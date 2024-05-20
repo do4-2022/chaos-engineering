@@ -1,7 +1,12 @@
+locals {
+  namespaces = ["votingapp", "votingapp-nats"]
+}
+
 resource "kubernetes_secret" "git_credentials" {
+  for_each = toset(local.namespaces)
   metadata {
     name      = "git-credentials"
-    namespace = "votingapp"
+    namespace = each.value
   }
 
   data = {
@@ -13,9 +18,10 @@ resource "kubernetes_secret" "git_credentials" {
 }
 
 resource "kubernetes_secret" "registry_credentials" {
+  for_each = toset(local.namespaces)
   metadata {
     name      = "registry-credentials"
-    namespace = "votingapp"
+    namespace = each.value
   }
 
   data = {
@@ -26,9 +32,10 @@ resource "kubernetes_secret" "registry_credentials" {
 }
 
 resource "kubernetes_secret" "postgresql_credentials" {
+  for_each = toset(local.namespaces)
   metadata {
     name      = "db"
-    namespace = "votingapp"
+    namespace = each.value
   }
 
   data = {
