@@ -4,20 +4,19 @@ namespace: flux-system
 
 resources:
   - apps/base/postgresql.yaml
+  - apps/base/redis.yaml
   - apps/base/result-ui.yaml
   - apps/base/result.yaml
   - apps/base/vote-ui.yaml
   - apps/base/vote.yaml
   - apps/base/worker.yaml
-
+  - apps/nats/nats.yaml
   - apps/nats/postgresql.yaml
-  - apps/nats/redis.yaml
   - apps/nats/result-ui.yaml
   - apps/nats/result.yaml
   - apps/nats/vote-ui.yaml
   - apps/nats/vote.yaml
   - apps/nats/worker.yaml
-
   - infrastructure/cert-manager.yaml
   - infrastructure/chaos-mesh.yaml
   #  - infrastructure/chaos.yaml
