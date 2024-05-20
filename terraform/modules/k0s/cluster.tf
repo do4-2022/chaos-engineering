@@ -47,4 +47,16 @@ resource "k0s_cluster" "votingapp" {
       }
     ]
   )
+
+  config = <<EOT
+apiVersion: k0s.k0sproject.io/v1beta1
+kind: ClusterConfig
+metadata:
+  name: k0s
+spec:
+  api:
+    sans: [${join(", ", local.controller_hosts)}, "127.0.0.1"]
+  network:
+    provider: calico
+EOT
 }
