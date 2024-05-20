@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: namespace
+spec:
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: nats-julien-yann-alexisb
+  path: apps/namespace/base
