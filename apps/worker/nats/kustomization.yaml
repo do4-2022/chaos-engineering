@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: votingapp-nats
 
 resources:
-  - ../deployment.yaml
+  - deployment.yaml

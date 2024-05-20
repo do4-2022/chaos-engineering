@@ -5,7 +5,7 @@ resource "openstack_compute_instance_v2" "master" {
   image_name      = var.master_image_name
   flavor_name     = var.master_flavor_name
   key_pair        = openstack_compute_keypair_v2.keypair.name
-  security_groups = [openstack_compute_secgroup_v2.secgroup.name]
+  security_groups = [openstack_networking_secgroup_v2.secgroup.name]
   network {
     name = openstack_networking_network_v2.private.name
   }

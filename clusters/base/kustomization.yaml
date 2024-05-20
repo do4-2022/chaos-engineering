@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: flux-system
 
 resources:
-  - apps/base/nats.yaml
   - apps/base/postgresql.yaml
   - apps/base/result-ui.yaml
   - apps/base/result.yaml
