@@ -48,3 +48,19 @@ variable "postgresql_password" {
   type        = string
   sensitive   = true
 }
+
+# OpenStack variables
+variable "openstack_auth_url" {
+  description = "The OpenStack auth URL"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_identity_application_credential" {
+  description = "The OpenStack application credential"
+  type = object({
+    id     = string
+    secret = string
+    region = string
+  })
+}

@@ -7,3 +7,15 @@ resources:
   - infrastructure/letsencrypt-issuer.yaml
   - infrastructure/metallb.yaml
   - infrastructure/cinder-csi.yaml
+
+patches:
+  - target:
+      group: helm.toolkit.fluxcd.io
+      version: v2beta1
+      kind: HelmRelease
+      name: chaos-mesh
+      namespace: chaos-mesh
+    patch: |-
+      - op: replace
+        path: /spec/values/prometheus/volume/storageClassName
+        value: csi-cinder-sc-delete

@@ -43,3 +43,21 @@ resource "kubernetes_secret" "postgresql_credentials" {
     "password" = var.postgresql_password
   }
 }
+
+resource "kubernetes_secret" "os_cloud_credentials" {
+  metadata {
+    name      = "os-cloud-credentials"
+    namespace = "kube-system"
+  }
+
+  data = {
+    "cloud.conf" = <<EOF
+[Global]
+auth-url = ${var.openstack_auth_url}
+application-credential-id = ${var.openstack_identity_application_credential.id}
+application-credential-secret = ${var.openstack_identity_application_credential.secret}
+region = ${var.openstack_identity_application_credential.region}
+tls-insecure = true
+EOF
+  }
+}

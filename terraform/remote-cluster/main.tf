@@ -13,7 +13,8 @@ module "openstack" {
 }
 
 module "k0s" {
-  source               = "../modules/k0s"
+  source = "../modules/k0s"
+
   master_hosts         = module.openstack.master_ips
   worker_hosts         = module.openstack.worker_ips
   ssh_login_name       = var.ssh_login_name
@@ -52,4 +53,7 @@ module "votingapp" {
   docker_config_path  = var.docker_config_path
   postgresql_username = var.postgresql_username
   postgresql_password = var.postgresql_password
+
+  openstack_auth_url                        = var.openstack_auth_url
+  openstack_identity_application_credential = module.openstack.identity_application_credential
 }
