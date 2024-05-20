@@ -14,27 +14,9 @@ spec:
         name: chaos-mesh
       interval: 12h
   values:
-    chaosDaemon:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: node-role.kubernetes.io/control-plane
-                    operator: DoesNotExist
     controllerManager:
-      nodeSelector:
-        node-role.kubernetes.io/control-plane: "true"
       enableFilterNamespace: true
-    dashboard:
-      nodeSelector:
-        node-role.kubernetes.io/control-plane: "true"
-    dnsServer:
-      nodeSelector:
-        node-role.kubernetes.io/control-plane: "true"
     prometheus:
       create: true
       volume:
         storageClassName: "local-path"
-      nodeSelector:
-        node-role.kubernetes.io/control-plane: "true"
