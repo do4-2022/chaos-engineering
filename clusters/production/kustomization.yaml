@@ -6,4 +6,3 @@ resources:
   - ../base
   - infrastructure/letsencrypt-issuer.yaml
   - infrastructure/metallb.yaml
-  - infrastructure/openebs.yaml
