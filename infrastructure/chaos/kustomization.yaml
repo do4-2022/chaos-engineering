@@ -3,5 +3,14 @@ kind: Kustomization
 namespace: chaos
 
 resources:
-  - experiments/exessive_delay.yaml
-  - workflows/stress.yaml
+  # - experiments/exessive_delay.yaml
+  # - workflows/stress.yaml
+
+  - loadtesting/release.yaml
+  - loadtesting/repository.yaml
+# we don't include the loading test resource here, as we dont wan it to run now
+
+configMapGenerator:
+  - name: k6-test-config
+    files:
+    - test.js
