@@ -26,7 +26,7 @@ resource "openstack_networking_router_interface_v2" "private_interface" {
 }
 
 resource "openstack_networking_secgroup_v2" "secgroup" {
-  name        = "secgroup"
+  name        = "security-group"
   description = "A security group"
 }
 
