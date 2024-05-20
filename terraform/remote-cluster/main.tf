@@ -1,22 +1,21 @@
 module "openstack" {
   source = "../modules/openstack"
 
-  openstack_username                     = var.openstack_username
-  openstack_tenant_name                  = var.openstack_tenant_name
-  openstack_password                     = var.openstack_password
-  openstack_auth_url                     = var.openstack_auth_url
-  openstack_region                       = var.openstack_region
-  openstack_instances_keypair_name       = var.openstack_instances_keypair_name
-  openstack_instances_keypair_public_key = var.openstack_instances_keypair_public_key
+  username            = var.openstack_username
+  tenant_name         = var.openstack_tenant_name
+  password            = var.openstack_password
+  auth_url            = var.openstack_auth_url
+  region              = var.openstack_region
+  ssh_public_key_path = var.openstack_ssh_public_key_path
 }
 
 module "k0s" {
   source               = "../modules/k0s"
-  master_hosts         = [module.openstack.openstack_instance_master_ip]
-  worker_hosts         = [module.openstack.openstack_instance_worker_ip]
+  master_hosts         = module.openstack.master_ips
+  worker_hosts         = module.openstack.worker_ips
   ssh_login_name       = var.ssh_login_name
   cluster_environment  = var.cluster_environment
-  ssh_private_key_path = var.openstack_instances_keypair_private_key
+  ssh_private_key_path = var.openstack_ssh_private_key_path
 }
 
 locals {
