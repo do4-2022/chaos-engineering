@@ -9,10 +9,17 @@ resource "openstack_compute_instance_v2" "worker" {
   network {
     name = openstack_networking_network_v2.private.name
   }
+
+  user_data = <<-EOF
+  #!/bin/bash
+  sudo sed -i 's/#DNS=/DNS=10.0.0.3/g' /etc/systemd/resolved.conf
+  sudo systemctl restart systemd-resolved
+  EOF
 }
 
 resource "openstack_networking_floatingip_v2" "worker" {
-  count = var.nb_workers
+  depends_on = [openstack_compute_instance_v2.worker]
+  count      = var.nb_workers
 
   pool = var.worker_floating_ip_pool
 }
