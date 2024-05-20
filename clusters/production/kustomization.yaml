@@ -6,3 +6,4 @@ resources:
   - ../base
   - infrastructure/letsencrypt-issuer.yaml
   - infrastructure/metallb.yaml
+  - infrastructure/cinder-csi.yaml
