@@ -15,3 +15,6 @@ openstack_auth_url             = "https://overcloud.do.intra:13000"
 openstack_region               = "regionOne"
 openstack_ssh_public_key_path  = "~/.ssh/openstack_rsa.pub"
 openstack_ssh_private_key_path = "~/.ssh/openstack_rsa"
+
+nb_masters = 1
+nb_workers = 2

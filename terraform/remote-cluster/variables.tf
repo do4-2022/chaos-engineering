@@ -75,3 +75,15 @@ variable "openstack_ssh_private_key_path" {
   type        = string
   sensitive   = true
 }
+
+variable "nb_masters" {
+  description = "Number of master nodes"
+  type        = number
+  default     = 1
+}
+
+variable "nb_workers" {
+  description = "Number of worker nodes"
+  type        = number
+  default     = 1
+}

@@ -7,6 +7,9 @@ module "openstack" {
   auth_url            = var.openstack_auth_url
   region              = var.openstack_region
   ssh_public_key_path = var.openstack_ssh_public_key_path
+
+  nb_masters = var.nb_masters
+  nb_workers = var.nb_workers
 }
 
 module "k0s" {
