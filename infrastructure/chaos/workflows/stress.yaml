@@ -19,8 +19,8 @@ spec:
         - stress-chaos
 
     - name: stress-chaos
-      templateType: Chaos
-      chaos:
+      templateType: StressChaos
+      stressChaos:
         selector:
           namespaces:
             - votingapp
@@ -37,8 +37,8 @@ spec:
             size: 500MB  # Adjust memory stress as needed
 
     - name: network-delay-nats  # Inject network delay chaos on NATS
-      templateType: Chaos  
-      chaos:
+      templateType: NetworkChaos  
+      networkChaos:
         selector:
           namespaces:
             - votingapp
