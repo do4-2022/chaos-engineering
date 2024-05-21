@@ -15,7 +15,7 @@ output "identity_application_credential" {
 }
 
 output "public_network_id" {
-  value = openstack_networking_network_v2.public.id
+  value = data.openstack_networking_network_v2.public.id
 }
 
 output "private_subnet_id" {
