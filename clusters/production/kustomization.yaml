@@ -7,7 +7,6 @@ resources:
   - infrastructure/cinder-csi.yaml
   - infrastructure/ip-address-pool.yaml
   - infrastructure/letsencrypt-issuer.yaml
-  - infrastructure/metallb.yaml
   - infrastructure/openstack-cloud-controller-manager.yaml
 
 patches:
