@@ -27,9 +27,6 @@ spec:
       containers:
         - image: voting/vote:v1.0.13
           name: vote
-          env:
-            - name: BACKEND
-              value: "nats"
           imagePullPolicy: Always
           livenessProbe:
             initialDelaySeconds: 30
