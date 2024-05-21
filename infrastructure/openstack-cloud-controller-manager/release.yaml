@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: openstack-cloud-controller-manager
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: openstack-cloud-controller-manager
+      version: "2.29.0"
+      sourceRef:
+        kind: HelmRepository
+        name: cloud-provider-openstack
+      interval: 12h
+  values:
+    secret:
+      enabled: true
+      name: os-cloud-credentials
+      create: false
+    nodeSelector:

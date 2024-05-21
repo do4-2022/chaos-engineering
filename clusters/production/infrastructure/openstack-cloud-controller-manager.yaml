@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: metallb
+  name: openstack-cloud-controller-manager
 spec:
   interval: 1h
   retryInterval: 1m
@@ -12,6 +12,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: nats-julien-yann-alexisb
-  path: infrastructure/metallb
-  dependsOn:
-    - name: openstack-cloud-controller-manager
+  path: infrastructure/openstack-cloud-controller-manager

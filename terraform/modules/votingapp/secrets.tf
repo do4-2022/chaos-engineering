@@ -45,9 +45,11 @@ resource "kubernetes_secret" "postgresql_credentials" {
 }
 
 resource "kubernetes_secret" "os_cloud_credentials" {
+  for_each = toset(var.cluster_environment == "production" ? ["kube-system", "openstack-cloud-controller"] : [])
+
   metadata {
     name      = "os-cloud-credentials"
-    namespace = "kube-system"
+    namespace = each.value
   }
 
   data = {
