@@ -19,4 +19,4 @@ spec:
     prometheus:
       create: true
       volume:
-        storageClassName: "local-path"
+        storageClassName: "csi-cinder-sc-delete"
