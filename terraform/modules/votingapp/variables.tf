@@ -1,3 +1,8 @@
+variable "cluster_environment" {
+  description = "The environment of the cluster"
+  type        = string
+}
+
 variable "cluster_config_endpoint" {
   description = "The Kubernetes API server endpoint"
   type        = string
@@ -54,6 +59,7 @@ variable "openstack_auth_url" {
   description = "The OpenStack auth URL"
   type        = string
   sensitive   = true
+  default     = "https://overcloud.do.intra:13000"
 }
 
 variable "openstack_identity_application_credential" {
@@ -63,4 +69,9 @@ variable "openstack_identity_application_credential" {
     secret = string
     region = string
   })
+  default = {
+    id     = ""
+    secret = ""
+    region = ""
+  }
 }

@@ -20,6 +20,8 @@ module "flux" {
 module "votingapp" {
   source = "../modules/votingapp"
 
+  cluster_environment = var.cluster_environment
+
   cluster_config_endpoint               = module.k3d.config_endpoint
   cluster_config_cluster_ca_certificate = module.k3d.config_cluster_ca_certificate
   cluster_config_client_certificate     = module.k3d.config_client_certificate

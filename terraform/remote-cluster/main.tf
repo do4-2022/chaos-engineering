@@ -43,6 +43,8 @@ module "flux" {
 module "votingapp" {
   source = "../modules/votingapp"
 
+  cluster_environment = var.cluster_environment
+
   cluster_config_endpoint               = local.kube_config.clusters[0].cluster.server
   cluster_config_cluster_ca_certificate = base64decode(local.kube_config.clusters[0].cluster.certificate-authority-data)
   cluster_config_client_certificate     = base64decode(local.kube_config.users[0].user.client-certificate-data)
