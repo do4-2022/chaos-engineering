@@ -58,4 +58,6 @@ module "votingapp" {
 
   openstack_auth_url                        = var.openstack_auth_url
   openstack_identity_application_credential = module.openstack.identity_application_credential
+  openstack_network_id                      = module.openstack.public_network_id
+  openstack_subnet_id                       = module.openstack.private_subnet_id
 }

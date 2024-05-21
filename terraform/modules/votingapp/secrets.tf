@@ -60,6 +60,11 @@ application-credential-id = ${var.openstack_identity_application_credential.id}
 application-credential-secret = ${var.openstack_identity_application_credential.secret}
 region = ${var.openstack_identity_application_credential.region}
 tls-insecure = true
+
+[LoadBalancer]
+use-octavia=true
+floating-network-id=${var.openstack_network_id}
+subnet-id=${var.openstack_subnet_id}
 EOF
   }
 }

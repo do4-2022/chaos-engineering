@@ -75,3 +75,15 @@ variable "openstack_identity_application_credential" {
     region = ""
   }
 }
+
+variable "openstack_network_id" {
+  description = "The OpenStack network ID"
+  type        = string
+  default     = "public"
+}
+
+variable "openstack_subnet_id" {
+  description = "The OpenStack subnet ID"
+  type        = string
+  default     = "public-subnet"
+}

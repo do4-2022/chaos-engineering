@@ -13,3 +13,11 @@ output "identity_application_credential" {
     region = openstack_identity_application_credential_v3.k0s.region
   }
 }
+
+output "public_network_id" {
+  value = openstack_networking_network_v2.public.id
+}
+
+output "private_subnet_id" {
+  value = openstack_networking_subnet_v2.private.id
+}
