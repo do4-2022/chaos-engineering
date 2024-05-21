@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ip-address-pool
+spec:
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: nats-julien-yann-alexisb
+  path: infrastructure/ip-address-pool
+  dependsOn:
+    - name: metallb
+      kind: Kustomization
+      namespace: metallb-system

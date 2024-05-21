@@ -4,4 +4,5 @@ metadata:
   name: public-ip
 spec:
   addresses:
-    - 154.62.109.43/32
+    - 162.38.112.195/32
+    - 162.38.112.241/32
