@@ -5,7 +5,6 @@ namespace: flux-system
 resources:
   - ../base
   - infrastructure/cinder-csi.yaml
-  - infrastructure/ip-address-pool.yaml
   - infrastructure/letsencrypt-issuer.yaml
   - infrastructure/openstack-cloud-controller-manager.yaml
 
