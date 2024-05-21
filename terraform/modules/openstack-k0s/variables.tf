@@ -1,3 +1,4 @@
+# Kubernetes cluster configuration
 variable "cluster_config_endpoint" {
   description = "The Kubernetes API server endpoint"
   type        = string
@@ -21,30 +22,33 @@ variable "cluster_config_cluster_ca_certificate" {
   sensitive   = true
 }
 
-variable "docker_config_path" {
-  type        = string
-  description = "The path to the docker config file"
-  default     = "~/.docker/config.json"
-}
-
-variable "git_username" {
-  description = "The username for authenticating to the nats-julien-yann-alexisb repositories"
-  type        = string
-}
-
-variable "git_password" {
-  description = "The password for authenticating to the nats-julien-yann-alexisb repositories"
+# OpenStack configuration
+variable "openstack_username" {
+  description = "The OpenStack username"
   type        = string
   sensitive   = true
 }
 
-variable "postgresql_username" {
-  description = "The username for authenticating to the PostgreSQL database"
+variable "openstack_tenant_name" {
+  description = "The OpenStack tenant name"
   type        = string
+  sensitive   = true
 }
 
-variable "postgresql_password" {
-  description = "The password for authenticating to the PostgreSQL database"
+variable "openstack_password" {
+  description = "The OpenStack password"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_auth_url" {
+  description = "The OpenStack auth URL"
+  type        = string
+  sensitive   = true
+}
+
+variable "openstack_region" {
+  description = "The OpenStack region"
   type        = string
   sensitive   = true
 }

@@ -26,6 +26,21 @@ locals {
   kube_config = yamldecode(module.k0s.kubeconfig)
 }
 
+module "openstack_k0s" {
+  source = "../modules/openstack-k0s"
+
+  cluster_config_endpoint               = local.kube_config.clusters[0].cluster.server
+  cluster_config_cluster_ca_certificate = base64decode(local.kube_config.clusters[0].cluster.certificate-authority-data)
+  cluster_config_client_certificate     = base64decode(local.kube_config.users[0].user.client-certificate-data)
+  cluster_config_client_key             = base64decode(local.kube_config.users[0].user.client-key-data)
+
+  openstack_username    = var.openstack_username
+  openstack_tenant_name = var.openstack_tenant_name
+  openstack_password    = var.openstack_password
+  openstack_auth_url    = var.openstack_auth_url
+  openstack_region      = var.openstack_region
+}
+
 module "flux" {
   source = "../modules/flux"
 
@@ -43,8 +58,6 @@ module "flux" {
 module "votingapp" {
   source = "../modules/votingapp"
 
-  cluster_environment = var.cluster_environment
-
   cluster_config_endpoint               = local.kube_config.clusters[0].cluster.server
   cluster_config_cluster_ca_certificate = base64decode(local.kube_config.clusters[0].cluster.certificate-authority-data)
   cluster_config_client_certificate     = base64decode(local.kube_config.users[0].user.client-certificate-data)
@@ -55,9 +68,5 @@ module "votingapp" {
   docker_config_path  = var.docker_config_path
   postgresql_username = var.postgresql_username
   postgresql_password = var.postgresql_password
-
-  openstack_auth_url                        = var.openstack_auth_url
-  openstack_identity_application_credential = module.openstack.identity_application_credential
-  openstack_network_id                      = module.openstack.public_network_id
-  openstack_subnet_id                       = module.openstack.private_subnet_id
 }
+

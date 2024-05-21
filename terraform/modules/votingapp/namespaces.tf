@@ -34,20 +34,6 @@ resource "kubernetes_namespace" "monitoring" {
   }
 }
 
-resource "kubernetes_namespace" "metal_lb" {
-  count = var.cluster_environment == "production" ? 1 : 0
-  metadata {
-    name = "metallb-system"
-  }
-}
-
-resource "kubernetes_namespace" "openstack_cloud_controller" {
-  count = var.cluster_environment == "production" ? 1 : 0
-  metadata {
-    name = "openstack-cloud-controller"
-  }
-}
-
 resource "kubernetes_namespace" "chaos_mesh" {
   metadata {
     name = "chaos-mesh"
