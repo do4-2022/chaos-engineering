@@ -4,4 +4,5 @@ namespace: votingapp
 
 resources:
   - deployment.yaml
+  - hpa.yaml
   - service.yaml

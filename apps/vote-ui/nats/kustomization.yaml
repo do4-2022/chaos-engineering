@@ -4,4 +4,5 @@ namespace: votingapp-nats
 
 resources:
   - deployment.yaml
+  - hpa.yaml
   - service.yaml
